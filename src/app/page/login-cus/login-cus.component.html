@@ -1,0 +1,18 @@
+<div class="center">
+  <mat-card style="width: 400px;">
+    <div style="display: flex; flex-direction: column;margin :20px ">
+      <h1>Login Customer</h1>
+      <label >Username</label>
+      <input type="text" name="name" #name>
+      <br>
+      <label >password</label>
+      <input type="password" name="password" #password>
+      <br>
+      <button mat-raised-button color="primary" (click)="login(name.value,password.value)">Login</button>
+      <br>
+      <a routerLink="/createUser">create new user</a>
+    </div>
+  </mat-card>
+</div>
+
+

@@ -1,0 +1,122 @@
+<app-header></app-header>
+<div class="container" style="margin-left:50px; font-family: 'Mitr', sans-serif;">
+  <div style="float: right;">เงินในบัญชี: {{this.money}} บาท</div>
+  <div style="margin-top: 50px;">รายการที่ค้างชำระสินค้า</div>
+  <div class="row" >
+    <div class="col-12">
+      <mat-card style="margin-top: 10px; background-color:rgb(249, 181, 55) ;">
+        <div class="row" style="margin-top: 5px;margin-bottom: 5px;">
+          <div class="col-1" style="text-align: center;">
+            <span >ลำดับ</span>
+          </div>
+          <div class="col-3"style="text-align: center;">
+            <span>ชื่ออาหาร</span>
+          </div>
+          <div class="col-2"style="text-align: center;">
+            <span>ราคา</span>
+          </div>
+          <div class="col-4"style="text-align: center;">
+            <span>จำนวน</span>
+          </div>
+          <div class="col-1"style="text-align: center;">
+            <span>ราคา</span>
+          </div>
+        </div>
+      </mat-card>
+
+      <mat-card style="margin-top: 10px;" *ngFor="let foodOrder of this.foodOrders;let i = index">
+        <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
+          <div class="col-1" style="text-align: center;">
+            <span>{{i+1}}</span>
+          </div>
+          <div class="col-3"style="text-align: center;">
+            <span>{{foodOrder.name}}</span>
+          </div>
+          <div class="col-2"style="text-align: center;">
+            <span>{{foodOrder.price}}</span>
+          </div>
+          <div class="col-4" style="text-align: center">
+            <span
+              ><button
+                mat-button
+                color="warn"
+                style="font-size: 20px"
+                (click)="minusAmount(foodOrder.oid, foodOrder.fid)"
+              >
+                -</button
+              >{{ foodOrder.amount
+              }}<button
+                mat-button
+                color="primary"
+                style="font-size: 20px"
+                (click)="plusAmount(foodOrder.oid, foodOrder.fid)"
+              >
+                +
+              </button></span
+            >
+          </div>
+          <div class="col-1" style="text-align: center;">
+            <span>{{foodOrder.sumPrice}}</span>
+          </div>
+          <div class="col-1"style="justify-content:center">
+            <button mat-button color="warn" style="margin-top: -5px;" (click)="del(foodOrder.oid, foodOrder.fid)" routerLink="/basket2">ลบ</button>
+          </div>
+        </div>
+      </mat-card>
+
+      <span style="float: right;">รวมทั้งหมด {{this.total}} บาท</span>
+    </div>
+  </div>
+
+  <button mat-raised-button color="primary" style="float: right;" (click)="payUpdate(this.oid)">ชำระเงิน</button>
+  <!-- order finished -->
+  <div style="margin-top: 50px;">รายการที่ชำระสินค้าสำเร็จ</div>
+  <div class="row">
+    <div class="col-12">
+      <mat-card style="margin-top: 10px; background-color:rgb(249, 181, 55) ;">
+        <div class="row" style="margin-top: 5px;margin-bottom: 5px;">
+          <div class="col-1" style="text-align: center;">
+            <span >ออเดอร์</span>
+          </div>
+          <div class="col-3"style="text-align: center;">
+            <span>วันที่สั่งสินค้า</span>
+          </div>
+          <div class="col-3"style="text-align: center;">
+            <span>วันที่จัดส่งสำเร็จ</span>
+          </div>
+          <div class="col-3"style="text-align: center;">
+            <span>สถานะ</span>
+          </div>
+          <div class="col-2"style="text-align: center;">
+            <span>รายละเอียด</span>
+          </div>
+        </div>
+      </mat-card>
+
+      <mat-card style="margin-top: 10px;" *ngFor="let order of this.finish_orders">
+        <div class="row" style="margin-top: 5px;margin-bottom: 5px;">
+          <div class="col-1" style="text-align: center;">
+            <span>{{order.oid}}</span>
+          </div>
+          <div class="col-3"style="text-align: center;">
+            <span>{{order.fdate}}</span>
+          </div>
+          <div class="col-3"style="text-align: center;">
+            <span>{{order.odate}}</span>
+          </div>
+          <div class="col-3"style="text-align: center;">
+            <span>{{order.status}}</span>
+          </div>
+          <div class="col-2"style="text-align: center;">
+            <button mat-button color="warn" style="margin-top: -5px;" routerLink="/bill" (click)="saveOidToDataService(order.oid)">ข้อมูล</button>
+          </div>
+        </div>
+      </mat-card>
+      <span><button mat-button color="warn" routerLink="/main">กลับ</button></span>
+    </div>
+  </div>
+
+</div>
+
+
+

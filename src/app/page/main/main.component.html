@@ -1,0 +1,106 @@
+<app-header></app-header>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div style="display: flex; flex-direction: row; justify-content: center">
+        <img class="img-cover"
+          src="https://s.isanook.com/wo/0/rp/rc/w670h402/yatxacm1w0/aHR0cHM6Ly9zLmlzYW5vb2suY29tL3dvLzAvdWQvMzYvMTgwNjkzL2Zvb2QuanBn.jpg" />
+        <span class="font-cover">ตามสั่งตามใจ</span>
+      </div>
+    </div>
+    <div style="
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: 1px;
+      ">
+      <div class="col-6" style="margin: 20px">
+        <mat-toolbar style="
+            display: flex;
+            flex-direction: row;
+            justify-content: start;
+            background-color: white;
+            margin-left: 20px;
+          ">
+          <span class="font-menu2" style="margin-left: 15px">เลือกประเภทอาหาร :
+          </span>
+          <button mat-button color="warn" class="font-menu2" *ngFor="let type of this.foodtypes"
+            (click)="SearchType(type.tid)">
+            {{ this.type.name }}
+          </button>
+          <button mat-button color="warn" class="font-menu2" style="margin-left: 10px" (click)="TypeAll()">
+            แสดงเมนูทั้งหมด
+          </button>
+
+          <button style="margin-left: 10px; width: 50px; height: 50px;" routerLink="/basket2" class="btn btn-basic">
+            <img class="img-trolley" src="https://cdn-icons-png.flaticon.com/512/2838/2838895.png" width="50px"
+              height="50px" />
+          </button>
+        </mat-toolbar>
+        <!-- *ngIf="this.isMultiple == 'show-one'" -->
+        <button mat-button class="button-size" *ngFor="let food of this.foods" (click)="show(this.food.fid)">
+          <img class="img-menu" src="{{ this.food.img }}" />
+          <span class="font-menu2" style="float: left">{{
+            this.food.name
+            }}</span>
+          <span class="font-menu2" style="float: right">บาท</span>
+          <span class="font-menu2" style="float: right">{{
+            this.food.price
+            }}</span>
+        </button>
+      </div>
+
+      <!-- Shiba -->
+
+      <div class="col-5" style="margin-top: 20px">
+        <mat-toolbar style="
+            display: flex;
+            flex-direction: row;
+            justify-content: start;
+            background-color: white;
+            margin-left: 20px;
+          ">
+          <div style="float: right;">เงินในบัญชี: {{this.money}} บาท</div>
+          <span><button mat-button color="warn" (click)="plusMoney(this.cid)">เติมเงิน</button></span>
+        </mat-toolbar>
+
+        <div style="display: flex; flex-direction: row; justify-content: center">
+          <div *ngIf="SelectFood != undefined">
+            <img class="img-show" src="{{ this.SelectFood.img }}" />
+            <span>
+              <h1 class="font-menu2">{{ this.SelectFood.name }}</h1>
+            </span>
+            <span>
+              <p class="font-menu2">
+                รายละเอียด :{{ this.SelectFood.detail }}
+              </p>
+            </span>
+            <span>
+              <p class="font-menu2">
+                ราคา {{ this.SelectFood.price }} บาท
+              </p>
+            </span>
+            <span style="
+                display: flex;
+                justify-content: center;
+                font-size: 50px;
+                margin-top: 20px;
+              ">{{ this.count }}</span>
+            <span #num style="
+                display: flex;
+                justify-content: space-around;
+                font-size: 30px;
+                margin-bottom: 10px;
+              "><button mat-button color="warn" (click)="delete()">-</button>
+              <button mat-button color="primary" (click)="plus()">+</button>
+            </span>
+            <button mat-raised-button color="accent" class="font-menu2" style="width: 100%"
+              (click)="addToCart(this.SelectFood, this.count)">
+              เพิ่มลงในตะกร้า
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

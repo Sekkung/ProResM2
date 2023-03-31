@@ -1,0 +1,81 @@
+<app-header></app-header>
+<div class="container" >
+  <div style="display: flex; justify-content: center; align-items: center;">
+    <mat-card class="cardBill">
+      <div style="display: flex; flex-direction: row; justify-content: center">
+        <img class="img-cover"
+          src="https://s.isanook.com/wo/0/rp/rc/w670h402/yatxacm1w0/aHR0cHM6Ly9zLmlzYW5vb2suY29tL3dvLzAvdWQvMzYvMTgwNjkzL2Zvb2QuanBn.jpg" />
+        <span class="font-cover">ตามสั่งตามใจ</span>
+      </div>
+      <div style="display: flex; flex-direction: column;margin: 20px">
+        <span>
+          <h2 class="font-menu2">ออเดอร์: {{this.oid}}</h2>
+        </span>
+        <br>
+        <div class="row">
+          <div class="col-6">
+            <span class="font-menu2">รายละเอียดรายการอาหาร</span>
+          </div>
+          <div class="col-2">
+            <span class="font-menu2">จำนวน</span>
+          </div>
+          <div class="col-2">
+            <span class="font-menu2">ราคา</span>
+          </div>
+          <div class="col-2">
+            <span class="font-menu2">ราคารวม</span>
+          </div>
+        </div>
+
+        <div class="row" *ngFor="let foodOrder of this.foodOrders">
+          <div class="col-6">
+            <span>
+              <p class="font-menu2">{{foodOrder.name}}</p>
+            </span>
+          </div>
+          <div class="col-2">
+            <span>
+              <p class="font-menu2">{{foodOrder.amount}}</p>
+            </span>
+          </div>
+          <div class="col-2">
+            <span>
+              <p class="font-menu2">{{foodOrder.price}}</p>
+            </span>
+          </div>
+          <div class="col-2">
+            <span>
+              <p class="font-menu2">{{foodOrder.sumPrice}}</p>
+            </span>
+          </div>
+        </div>
+        <span>
+          <p class="font-menu2">รวมทั้งสิ้น {{this.Total}} บาท</p>
+        </span>
+      </div>
+
+      <div style="display: flex; flex-direction: column;margin: 20px" *ngFor="let order of this.finish_orders">
+        <span>
+          <h4 class="font-menu2">รายละเอียดลูกค้า</h4>
+        </span>
+        <span>
+          <p class="font-menu2">ชื่อ: {{order.cusName}}</p>
+        </span>
+        <span>
+          <p class="font-menu2">เบอร์โทรศัพท์: {{order.cusPhone}}</p>
+        </span>
+        <span>
+          <p class="font-menu2">ที่อยู่: {{order.address}}</p>
+        </span>
+        <span>
+          <p class="font-menu2">วันที่สั่งสินค้า: {{order.fdate}}</p>
+        </span>
+        <span>
+          <p class="font-menu2">วันที่จัดส่งสำเร็จ: {{order.odate}}</p>
+        </span>
+      </div>
+    </mat-card>
+  </div>
+  <span><button mat-button color="warn" routerLink="/basket2" style="margin-left: 235px; margin-bottom: 100px;">กลับ</button></span>
+</div>
+

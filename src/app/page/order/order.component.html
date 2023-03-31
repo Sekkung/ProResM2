@@ -1,0 +1,143 @@
+<app-header></app-header>
+<div class="container" style="margin-left:50px; font-family: 'Mitr', sans-serif;">
+  <div class="row" >
+    <div class="col-6">
+
+      <mat-card style="margin-top: 20px; background-color:rgb(249, 181, 55) ;">
+        <div class="row" style="margin-top: 5px;margin-bottom: 5px;">
+          <div class="col-2" style="text-align: center;">
+            <span>ออเดอร์</span>
+          </div>
+          <div class="col-5">
+            <span>ชื่อลูกค้า</span>
+          </div>
+          <div class="col-2">
+            <span>รายละเอียด</span>
+          </div>
+          <div class="col-3">
+            <span>การจัดการ</span>
+          </div>
+        </div>
+      </mat-card>
+
+      <mat-card style="margin-top: 10px;" *ngFor="let order of this.orders">
+        <div class="row" style="margin-top: 10px;margin-bottom: 10px;">
+          <div class="col-2" style="text-align: center;">
+            <span>{{order.oid}}</span>
+          </div>
+          <div class="col-5">
+            <span>{{order.cusName}}</span>
+          </div>
+          <div class="col-2">
+            <button mat-raised-button (click)="show(this.order.oid)">ข้อมูล</button>
+          </div>
+          <div class="col-3" *ngIf="order.status == 'กำลังจัดส่ง'">
+            <button mat-raised-button (click)="updateStatus(order.oid,order.status)">{{order.status}}</button>
+          </div>
+          <div class="col-3" *ngIf="order.status == 'จัดส่งสำเร็จ'">
+            <button mat-raised-button color="accent" (click)="updateStatus(order.oid,order.status)">{{order.status}}</button>
+          </div>
+        </div>
+      </mat-card>
+      <span><button mat-button color="warn" routerLink="/loginOwner">กลับ</button></span>
+    </div>
+
+    <div class="col-1"></div>
+    <!-- show detail -->
+    <div class="col-5">
+      <div style="display: flex; flex-direction: row; justify-content: center">
+        <img class="img-cover"
+          src="https://s.isanook.com/wo/0/rp/rc/w670h402/yatxacm1w0/aHR0cHM6Ly9zLmlzYW5vb2suY29tL3dvLzAvdWQvMzYvMTgwNjkzL2Zvb2QuanBn.jpg" />
+        <span class="font-cover">ตามสั่งตามใจ</span>
+      </div>
+      <div style="display: flex; flex-direction: column;margin-top: 10px">
+        <span>
+          <h2 class="font-menu2">ออเดอร์: {{this.oid_perOrder}}</h2>
+        </span>
+        <div class="row">
+          <div class="col-6">
+            <span class="font-menu2">รายละเอียดรายการอาหาร</span>
+          </div>
+          <div class="col-2">
+            <span class="font-menu2">จำนวน</span>
+          </div>
+          <div class="col-2">
+            <span class="font-menu2">ราคา</span>
+          </div>
+          <div class="col-2">
+            <span class="font-menu2">ราคารวม</span>
+          </div>
+        </div>
+
+        <div class="row" *ngFor="let foodOrder of this.foodOrders">
+          <div class="col-6">
+            <span>
+              <p class="font-menu2">{{foodOrder.name}}</p>
+            </span>
+          </div>
+          <div class="col-2">
+            <span>
+              <p class="font-menu2">{{foodOrder.amount}}</p>
+            </span>
+          </div>
+          <div class="col-2">
+            <span>
+              <p class="font-menu2">{{foodOrder.price}}</p>
+            </span>
+          </div>
+          <div class="col-2">
+            <span>
+              <p class="font-menu2">{{foodOrder.sumPrice}}</p>
+            </span>
+          </div>
+        </div>
+        <span>
+          <p class="font-menu2">รวมทั้งสิ้น {{this.Total}} บาท</p>
+        </span>
+      </div>
+
+      <div style="display: flex; flex-direction: column;margin-top: 10px" *ngFor="let order of this.finish_orders">
+        <span>
+          <h4 class="font-menu2">รายละเอียดลูกค้า</h4>
+        </span>
+        <span>
+          <p class="font-menu2">ชื่อ: {{order.cusName}}</p>
+        </span>
+        <span>
+          <p class="font-menu2">เบอร์โทรศัพท์: {{order.cusPhone}}</p>
+        </span>
+        <span>
+          <p class="font-menu2">ที่อยู่: {{order.address}}</p>
+        </span>
+        <span>
+          <p class="font-menu2">วันที่สั่งสินค้า: {{order.fdate}}</p>
+        </span>
+        <span>
+          <p class="font-menu2">วันที่จัดส่งสำเร็จ: {{order.odate}}</p>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <div *ngFor="let order of this.orders">
+  <mat-card class="order_card">
+    <div class="order_info">
+      <span>Order: {{order.orderID}}</span>
+      <span>Customer: {{order.cusName}}</span>
+      <div style="display: flex;flex-direction: row;">
+        <div style="display: flex;flex-direction: column;width: 300px;">
+          <span>Menu</span>
+          <span>{{order.foodName}}</span>
+        </div>
+        <div style="display: flex;flex-direction: column;width: 300px;">
+          <span>Amount</span>
+          <span>{{order.amount}}</span>
+        </div>
+      </div>
+      <button class="bt-order" mat-raised-button color="warn"><span style="font-size: 15px;">{{order.status}}</span></button>
+    </div>
+  </mat-card>
+</div> -->

@@ -1,0 +1,14 @@
+<mat-toolbar class="app-bar">
+  <img
+    class="img-logo"
+    src="https://cdn-icons-png.flaticon.com/512/3183/3183463.png"
+    alt="icon"
+  />
+  <span class="font-logo">ตามสั่งตามใจ</span>
+  <span class="space"></span>
+  <div class="font-menu">
+    <button mat-button routerLink="/first">หน้าแรก</button>
+    <button mat-button routerLink="/loginOwner">เจ้าของร้าน</button>
+    <button mat-button routerLink="/loginCus" (click)="resetOid()">ลูกค้า</button>
+  </div>
+</mat-toolbar>

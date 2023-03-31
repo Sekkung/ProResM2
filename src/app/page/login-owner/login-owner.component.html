@@ -1,0 +1,15 @@
+<div class="center">
+  <mat-card style="width: 400px; ">
+    <div style="display: flex; flex-direction: column; margin :20px ">
+      <h1>Login Owner</h1>
+      <label >Username</label>
+      <input type="text" name="username" #username>
+      <br>
+      <label >password</label>
+      <input type="password" name="password" #password>
+      <br>
+      <button mat-raised-button color="primary" (click)="login(username.value,password.value)">Login</button>
+    </div>
+  </mat-card>
+</div>
+

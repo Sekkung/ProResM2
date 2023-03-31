@@ -1,0 +1,99 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.app-bar{
+  background-color: rgb(249, 181, 55);
+}
+
+.img-trolley{
+  width: 20px;
+  height: 20px;
+}
+
+.fxLayout{
+  display: flex;
+  position: relative;
+}
+
+
+.font-logo{
+  margin-left: 10px;
+  font-family: 'Pattaya', sans-serif;
+  font-size: 30px;
+}
+
+.font-name{
+  font-size: 20px;
+  font-family: 'Mitr', sans-serif;
+}
+
+.font-menu{
+  font-family: 'K2D', sans-serif;
+}
+.space{
+  flex: 1 1 auto;
+}
+
+.font-menu2{
+  font-family: 'Mitr', sans-serif;
+}
+
+.img-logo{
+  width: 50px;
+  height: 50px;
+}
+
+.img-cover{
+  object-fit: cover;
+  width: 1500px;
+  height: 400px;
+  filter: brightness(0.5);
+}
+
+.font-cover{
+  position: absolute;
+  top: 25%;
+  color: rgb(249, 181, 55) ;
+  font-family: 'Pattaya', sans-serif;
+  font-size: 100px;
+
+}
+
+.img-menu{
+  width: 200px;
+  height: 150px;
+  border-radius: 10px;
+  transition: 1s ease;
+  object-fit: cover;
+}
+
+.img-menu:hover{
+  transform: scale(1.1);
+  transition: 1s ease;
+}
+
+.button-size{
+  margin: 20px;
+  width: 200px;
+  height: 150px;
+}
+.img-show{
+  width: 500px;
+  height: 400px;
+  position: sticky;
+  border-radius: 10px;
+}
+
+
+.example-card {
+  max-width: 700px;
+}
+
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
